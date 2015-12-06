@@ -2,7 +2,7 @@ package test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import zinjvi.model.order.Order;
+import zinjvi.model.Order;
 
 import java.text.NumberFormat;
 
@@ -18,7 +18,7 @@ public class Test {
         System.out.println(f);
 
         Order order = new Order();
-        order.setAmount(1d);
+//        order.setAmount(1d);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String os = objectMapper.writeValueAsString(order);

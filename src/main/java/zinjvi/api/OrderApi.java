@@ -3,11 +3,10 @@ package zinjvi.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import zinjvi.model.OrderResponse;
+import zinjvi.model.User;
 import zinjvi.service.OrderResponseService;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 import java.io.UnsupportedEncodingException;
@@ -25,10 +24,12 @@ public class OrderApi {
     @Autowired
     private OrderResponseService orderResponseService;
 
-    @GET
-    @Path("/generate")
-    public OrderResponse generate() throws GeneralSecurityException, UnsupportedEncodingException {
-        return orderResponseService.createOrderResponse();
+    @POST
+    @Path("/generate/{productCode}")
+    public OrderResponse generate(
+            @PathParam("productCode") String productCode,
+            @BeanParam User user) throws GeneralSecurityException, UnsupportedEncodingException {
+        return orderResponseService.createOrderResponse(productCode, user);
     }
 
 }

@@ -1,14 +1,39 @@
-package zinjvi.model.order;
+package zinjvi.model;
+
+import javax.persistence.*;
+import javax.ws.rs.FormParam;
 
 /**
  * Created by Vitaliy on 11/28/2015.
  */
+@Entity
+@Table(name = "ap_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @FormParam("userId")
+    private Long userId;
+
+    @FormParam("firstName")
     private String firstName;
+
+    @FormParam("lastName")
     private String lastName;
+
+    @FormParam("email")
     private String email;
+
+    @FormParam("phone")
     private String phone;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -41,4 +66,5 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }
