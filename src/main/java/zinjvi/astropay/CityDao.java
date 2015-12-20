@@ -1,4 +1,4 @@
-package zinjvi;
+package zinjvi.astropay;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

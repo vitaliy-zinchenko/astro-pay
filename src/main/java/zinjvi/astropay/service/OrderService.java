@@ -1,12 +1,12 @@
-package zinjvi.service;
+package zinjvi.astropay.service;
 
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import zinjvi.dao.OrderDao;
-import zinjvi.model.OrderResponse;
-import zinjvi.model.order.Order;
+import zinjvi.astropay.dao.OrderDao;
+import zinjvi.astropay.model.OrderResponse;
+import zinjvi.astropay.model.order.Order;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;

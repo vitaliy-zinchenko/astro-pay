@@ -1,4 +1,4 @@
-package zinjvi;
+package zinjvi.astropay;
 
 import com.mongodb.DB;
 import com.mongodb.Mongo;

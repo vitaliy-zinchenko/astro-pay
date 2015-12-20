@@ -2,7 +2,7 @@ package test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import zinjvi.model.order.Order;
+import zinjvi.astropay.model.order.Order;
 
 import java.text.NumberFormat;
 

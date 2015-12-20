@@ -1,4 +1,4 @@
-package zinjvi.model.order;
+package zinjvi.astropay.model.order;
 
 /**
  * Created by Vitaliy on 11/28/2015.

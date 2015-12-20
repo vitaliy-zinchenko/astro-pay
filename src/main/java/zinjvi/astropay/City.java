@@ -1,4 +1,4 @@
-package zinjvi;
+package zinjvi.astropay;
 
 import javax.persistence.*;
 import java.io.Serializable;

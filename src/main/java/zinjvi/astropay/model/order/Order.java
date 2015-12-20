@@ -1,7 +1,6 @@
-package zinjvi.model.order;
+package zinjvi.astropay.model.order;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

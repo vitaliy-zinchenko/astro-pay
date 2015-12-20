@@ -106,7 +106,60 @@
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
 
+		<!--<dependency>-->
+			<!--<groupId>zinjvi</groupId>-->
+			<!--<artifactId>messenger-api-rest-client</artifactId>-->
+			<!--<version>0.0.1-SNAPSHOT</version>-->
+		<!--</dependency>-->
 
+		<dependency>
+			<groupId>zinjvi</groupId>
+			<artifactId>messenger-api-rest-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-client</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-hc</artifactId>
+			<!-- 2.7.8 or 3.0.0-milestone1 -->
+			<version>3.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-bindings-soap</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-extension-providers</artifactId>
+			<version>3.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.0</version>
+		</dependency>
 
 	</dependencies>
 	

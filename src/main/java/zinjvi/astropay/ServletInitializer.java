@@ -1,4 +1,4 @@
-package zinjvi;
+package zinjvi.astropay;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +14,11 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		LOG.debug("os");
 		super.onStartup(servletContext);
 	}
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-
 		return application.sources(AstroPayApplication.class);
 	}
 

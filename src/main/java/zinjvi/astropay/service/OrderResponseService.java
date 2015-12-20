@@ -1,12 +1,10 @@
-package zinjvi.service;
+package zinjvi.astropay.service;
 
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import zinjvi.dao.OrderDao;
-import zinjvi.model.OrderResponse;
-import zinjvi.model.order.Order;
+import zinjvi.astropay.model.OrderResponse;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -16,7 +14,6 @@ import java.security.GeneralSecurityException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.text.NumberFormat;
-import java.util.Date;
 
 /**
  * Created by Vitaliy on 11/28/2015.

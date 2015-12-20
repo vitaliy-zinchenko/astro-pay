@@ -1,9 +1,9 @@
-package zinjvi.dao;
+package zinjvi.astropay.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
-import zinjvi.model.order.Order;
+import zinjvi.astropay.model.order.Order;
 
 /**
  * Created by Vitaliy on 11/28/2015.
