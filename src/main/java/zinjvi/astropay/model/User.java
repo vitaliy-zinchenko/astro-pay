@@ -1,5 +1,7 @@
 package zinjvi.astropay.model;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import javax.ws.rs.FormParam;
 

@@ -1,13 +1,25 @@
-<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/libs/js/jquery-2.1.4.min.js"></script>
 <script src="https://secure.wayforpay.com/server/pay-widget.js"></script>
+<script src="/libs/css/materialize/js/materialize.min.js"></script>
 
-<script src="/js/main.js"></script>
+<script src="/public/js/main.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/css/materialize/css/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/libs/css/materialize/css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/public/css/main.css">
 
 <div class="row">
-    <form class="col s12 payment-form" data-product-code="${productCode}">
+    <form class="col s12 payment-form">
+        <div class="row">
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </select>
+                <label>Product</label>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s12">
                 <input id="code" class="js-user-first-name pay-input" name="userFirstName" type="text">

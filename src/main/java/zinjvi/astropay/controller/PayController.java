@@ -20,13 +20,9 @@ public class PayController {
     @Autowired
     private ProductDao productDao;
 
-    @RequestMapping("/pay/{productCode}")
-    public String main(@PathVariable String productCode, Model model) {
-        if(productDao.findByProductCode(productCode) == null) {
-            LOG.error("No such product"); //TODO configure email notification
-            throw new RuntimeException("No such product"); //TODO
-        }
-        model.addAttribute("productCode", productCode);
+    @RequestMapping("/pay")
+    public String main(Model model) {
+        model.addAttribute("products", productDao.findAll());
         return "pay";
     }
 

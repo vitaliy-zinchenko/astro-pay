@@ -11,8 +11,8 @@
 <#macro display_page>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/materialize/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/admin/general.css">
+    <link rel="stylesheet" type="text/css" href="/libs/css/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/admin/general.css">
 </head>
 <body>
 
@@ -27,6 +27,7 @@
         </ul>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <@page_menu/>
+            <li><a href="/logout">Logout</a></li>
         </ul>
     </div>
 </nav>
