@@ -1,5 +1,7 @@
 package zinjvi.astropay.model.order;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import zinjvi.astropay.model.Merchant;
 import zinjvi.astropay.model.Product;
 import zinjvi.astropay.model.User;
@@ -40,6 +42,7 @@ public class Order {
     private Merchant merchant;
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
+    @org.codehaus.jackson.annotate.JsonBackReference
     private List<Status> statuses = new ArrayList<>();
 
     public Long getOrderId() {

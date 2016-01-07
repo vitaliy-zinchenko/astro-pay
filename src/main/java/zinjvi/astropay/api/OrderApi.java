@@ -17,6 +17,7 @@ import java.security.GeneralSecurityException;
 /**
  * Created by Vitaliy on 11/28/2015.
  */
+//TODO move to PayController
 @Component
 @Provider
 @Path("/order")

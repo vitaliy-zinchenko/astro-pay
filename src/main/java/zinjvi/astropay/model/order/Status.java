@@ -1,5 +1,8 @@
 package zinjvi.astropay.model.order;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +32,7 @@ public class Status {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @org.codehaus.jackson.annotate.JsonManagedReference
     private Order order;
 
     @PrePersist

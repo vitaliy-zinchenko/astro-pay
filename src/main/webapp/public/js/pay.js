@@ -20,18 +20,20 @@ app.Payment = function ($elPaymentForm) {
     var self = this;
 
     this.wayforpay = new Wayforpay();
-    this.$el = $elPaymentForm;
-    this.productId = this.$el.data('product-id');
-    this.$el.find('.js-open-payment').on('click', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        self.pay();
-    })
+    this.$elPaymentForm = $elPaymentForm;
+    this.productId = this.$elPaymentForm.data('product-id');
+    this.$elPaymentForm.validate({
+        submitHandler: function(form) {
+            self.pay();
+        }
+    });
 };
 
 app.Payment.prototype = {
     pay: function () {
-        var orderResponse = this.loadOrderResponse();
+        this.generateOrderResponse(this.callWayForPay);
+    },
+    callWayForPay: function(orderResponse) {
         this.wayforpay.run({
                 merchantAccount: orderResponse.merchantAccount,
                 merchantDomainName: orderResponse.merchantDomainName,
@@ -44,13 +46,13 @@ app.Payment.prototype = {
                 productName: orderResponse.productName,
                 productPrice: orderResponse.productPrice,
                 productCount: orderResponse.productCount,
-                clientFirstName: this.$el.find('.js-user-first-name').val(),
-                clientLastName: this.$el.find('.js-user-last-name').val(),
-                clientEmail: this.$el.find('.js-user-email').val(),
-                clientPhone: this.$el.find('.js-user-phone').val()
+                clientFirstName: this.$elPaymentForm.find('.js-user-first-name').val(),
+                clientLastName: this.$elPaymentForm.find('.js-user-last-name').val(),
+                clientEmail: this.$elPaymentForm.find('.js-user-email').val(),
+                clientPhone: this.$elPaymentForm.find('.js-user-phone').val()
             },
             function (response) {
-                console.log("ok");
+                window.location = '/apy/successful/' + orderResponse.order.id;
             },
             function (response) {
                 console.log("fail");
@@ -59,28 +61,26 @@ app.Payment.prototype = {
                 console.log("in progress");
             }
         );
-    }
-    , loadOrderResponse: function () {
-        var result;
+    },
+    generateOrderResponse: function (orderResponseHandler) {
+        var self = this;
         $.ajax({
             url:app.consts.ORDER_GENERATE_URL + '/' + this.productId,
-            async: false,
             method: 'POST',
             data: {
-                firstName: this.$el.find('.js-user-first-name').val(),
-                lastName: this.$el.find('.js-user-last-name').val(),
-                email: this.$el.find('.js-user-email').val(),
-                phone: this.$el.find('.js-user-phone').val()
+                firstName: this.$elPaymentForm.find('.js-user-first-name').val(),
+                lastName: this.$elPaymentForm.find('.js-user-last-name').val(),
+                email: this.$elPaymentForm.find('.js-user-email').val(),
+                phone: this.$elPaymentForm.find('.js-user-phone').val()
             },
             success: function(data) {
-                result = data;
+                orderResponseHandler.call(self, data);
             },
-            fail: function() {
+            error: function() {
                 //TODO notify administrator
                 console.log('fail during loading order data');
             }
         });
-        return result;
     }
 
 };

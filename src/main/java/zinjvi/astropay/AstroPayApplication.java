@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import({MongoConfig.class, CxfConfiguration.class, WebSecurityConfig.class, WebMvcConfig.class})
+@Import({MailConfig.class, CxfConfiguration.class, WebSecurityConfig.class, WebMvcConfig.class})
 public class AstroPayApplication {
 
     public static void main(String[] args) {

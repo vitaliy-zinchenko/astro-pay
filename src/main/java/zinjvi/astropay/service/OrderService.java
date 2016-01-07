@@ -33,6 +33,8 @@ public class OrderService {
     private UserDao userDao;
     @Autowired
     private StatusTypeDao statusTypeDao;
+    @Autowired
+    private OrderEmailService orderEmailService;
 
     public Order generate(Long productId, User user) {
         Order order = new Order();
@@ -54,13 +56,14 @@ public class OrderService {
 
     @Transactional
     public void markOrderAsPayed(Long orderId) {
-        changeOrderStatus(orderId, StatusTypeEnum.PAYED);
+        Order order = orderDao.find(orderId);
+        order.addStatus(createStatus(StatusTypeEnum.PAYED));
+        orderEmailService.sendPayedNotification(order);
     }
 
     @Transactional
     public void changeOrderStatus(Long orderId, StatusTypeEnum statusType) {
-        Order order = orderDao.find(orderId);
-        order.addStatus(createStatus(statusType));
+
     }
 
     public List<Order> findAll() {
