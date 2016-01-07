@@ -1,7 +1,6 @@
-package zinjvi.astropay.model;
+package zinjvi.astropay.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import zinjvi.astropay.model.Order;
+import zinjvi.astropay.model.order.Order;
 
 /**
  * Created by Vitaliy on 11/28/2015.

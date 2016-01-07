@@ -3,7 +3,7 @@ package zinjvi.astropay.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import zinjvi.astropay.model.Order;
+import zinjvi.astropay.model.order.Order;
 
 import javax.persistence.EntityManager;
 import java.util.List;

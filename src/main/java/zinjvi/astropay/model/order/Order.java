@@ -1,6 +1,11 @@
-package zinjvi.astropay.model;
+package zinjvi.astropay.model.order;
+
+import zinjvi.astropay.model.Merchant;
+import zinjvi.astropay.model.Product;
+import zinjvi.astropay.model.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,10 +13,11 @@ import java.util.List;
  * Created by Vitaliy on 11/28/2015.
  */
 @Entity
-@Table(name = "ap_order")
+@Table(name = "ap_ord_order")
 public class Order {
 
     public static final String ORDER_ID_GENERATOR = "order_id_generator";
+
     @Id
     @GeneratedValue(generator = ORDER_ID_GENERATOR, strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = ORDER_ID_GENERATOR, sequenceName = ORDER_ID_GENERATOR)
@@ -24,7 +30,7 @@ public class Order {
     private User user;
 
     @ManyToMany
-    @JoinTable(name = "ap_order_product",
+    @JoinTable(name = "ap_ord_order_product",
             joinColumns = {@JoinColumn(name = "order_id")},
             inverseJoinColumns = {@JoinColumn(name = "product_id")})
     private List<Product> products;
@@ -32,6 +38,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "merchant_id")
     private Merchant merchant;
+
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order")
+    private List<Status> statuses = new ArrayList<>();
 
     public Long getOrderId() {
         return orderId;
@@ -77,5 +86,18 @@ public class Order {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public List<Status> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public void addStatus(Status status) {
+        status.setOrder(this);
+        this.statuses.add(status);
     }
 }

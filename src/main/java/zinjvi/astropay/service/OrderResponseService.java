@@ -4,10 +4,10 @@ import com.google.common.collect.ImmutableList;
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import zinjvi.astropay.model.Order;
+import zinjvi.astropay.model.order.Order;
 import zinjvi.astropay.model.Product;
 import zinjvi.astropay.model.User;
-import zinjvi.astropay.model.OrderResponse;
+import zinjvi.astropay.dto.OrderResponse;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -30,9 +30,9 @@ public class OrderResponseService {
     @Autowired
     private OrderService orderService;
 
-    public OrderResponse createOrderResponse(String productCode, User user) throws GeneralSecurityException, UnsupportedEncodingException {
+    public OrderResponse createOrderResponse(Long productId, User user) throws GeneralSecurityException, UnsupportedEncodingException {
         OrderResponse orderResponse = new OrderResponse();
-        Order order = orderService.generate(productCode, user);
+        Order order = orderService.generate(productId, user);
         orderResponse.setOrder(order);
         orderResponse.setMerchantSignature(getMerchantSignature(order));
         return orderResponse;

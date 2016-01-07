@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import zinjvi.astropay.service.OrderResponseService;
 import zinjvi.astropay.model.User;
-import zinjvi.astropay.model.OrderResponse;
+import zinjvi.astropay.dto.OrderResponse;
 import zinjvi.messenger.api.rest.EmailProvider;
 
 import javax.annotation.Resource;
@@ -30,11 +30,11 @@ public class OrderApi {
     private OrderResponseService orderResponseService;
 
     @POST
-    @Path("/generate/{productCode}")
+    @Path("/generate/{productId}")
     public OrderResponse generate(
-            @PathParam("productCode") String productCode,
+            @PathParam("productId") Long productId,
             @BeanParam User user) throws GeneralSecurityException, UnsupportedEncodingException {
-        return orderResponseService.createOrderResponse(productCode, user);
+        return orderResponseService.createOrderResponse(productId, user);
     }
 
 }

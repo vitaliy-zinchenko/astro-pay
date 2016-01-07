@@ -17,6 +17,8 @@ public class Product {
 
     private String name;
 
+    private String description;
+
     private Double price;
 
     public Long getProductId() {
@@ -51,4 +53,11 @@ public class Product {
         this.price = price;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

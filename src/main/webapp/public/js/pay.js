@@ -21,7 +21,7 @@ app.Payment = function ($elPaymentForm) {
 
     this.wayforpay = new Wayforpay();
     this.$el = $elPaymentForm;
-    this.productCode = this.$el.data('product-code');
+    this.productId = this.$el.data('product-id');
     this.$el.find('.js-open-payment').on('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -63,7 +63,7 @@ app.Payment.prototype = {
     , loadOrderResponse: function () {
         var result;
         $.ajax({
-            url:app.consts.ORDER_GENERATE_URL + '/' + this.productCode,
+            url:app.consts.ORDER_GENERATE_URL + '/' + this.productId,
             async: false,
             method: 'POST',
             data: {

@@ -1,0 +1,42 @@
+/*Pay form*/
+
+.user-detail-wrapper {
+    margin: 20px auto;
+    width: 500px;
+}
+
+.row {
+    margin-bottom: 0
+}
+
+.input-field {
+    margin-top: 0;
+}
+
+.pay-input {
+    margin: 0 0 0 0;
+}
+
+.payment-form {
+    margin-top: 10px;
+}
+
+/*Products List*/
+
+.products-content {
+    padding: 50px;
+}
+
+.products-list td.price {
+    width: 10%;
+}
+.products-list td.controls {
+    width: 10%;
+}
+
+/*Successful pay wrapper*/
+
+.successful-pay-wrapper {
+    margin: 100px auto;
+    width: 400px;
+}

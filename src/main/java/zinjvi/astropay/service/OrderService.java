@@ -2,12 +2,16 @@ package zinjvi.astropay.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import zinjvi.astropay.dao.MerchantDao;
 import zinjvi.astropay.dao.OrderDao;
 import zinjvi.astropay.dao.ProductDao;
+import zinjvi.astropay.dao.StatusTypeDao;
 import zinjvi.astropay.dao.UserDao;
-import zinjvi.astropay.model.Order;
+import zinjvi.astropay.model.order.Order;
 import zinjvi.astropay.model.User;
+import zinjvi.astropay.model.order.Status;
+import zinjvi.astropay.model.order.StatusTypeEnum;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -27,16 +31,36 @@ public class OrderService {
     private ProductDao productDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private StatusTypeDao statusTypeDao;
 
-    public Order generate(String productCode, User user) {
+    public Order generate(Long productId, User user) {
         Order order = new Order();
         order.setOrderDate(new Date());
         userDao.save(user);//TODO remove
         order.setUser(user);
         order.setMerchant(merchantDao.findActiveMerchant());
-        order.setProducts(Arrays.asList(productDao.findByProductCode(productCode)));
+        order.setProducts(Arrays.asList(productDao.find(productId)));
+        order.addStatus(createStatus(StatusTypeEnum.OPEN));
         orderDao.save(order);
         return order;
+    }
+
+    private Status createStatus(StatusTypeEnum statusType) {
+        Status status = new Status();
+        status.setStatusType(statusTypeDao.findStatusType(statusType));
+        return status;
+    }
+
+    @Transactional
+    public void markOrderAsPayed(Long orderId) {
+        changeOrderStatus(orderId, StatusTypeEnum.PAYED);
+    }
+
+    @Transactional
+    public void changeOrderStatus(Long orderId, StatusTypeEnum statusType) {
+        Order order = orderDao.find(orderId);
+        order.addStatus(createStatus(statusType));
     }
 
     public List<Order> findAll() {
